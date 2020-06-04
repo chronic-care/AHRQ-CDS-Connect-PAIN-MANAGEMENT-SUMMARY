@@ -1,23 +1,23 @@
 {
   "files": {
-    "static/js/0.dc1b04d0.chunk.js": "/AHRQ-CDS-Connect-PAIN-MANAGEMENT-SUMMARY/static/js/0.dc1b04d0.chunk.js",
-    "launch.js": "/AHRQ-CDS-Connect-PAIN-MANAGEMENT-SUMMARY/static/js/launch.7eba8cba.chunk.js",
-    "main.css": "/AHRQ-CDS-Connect-PAIN-MANAGEMENT-SUMMARY/static/css/main.d8b70692.chunk.css",
-    "main.js": "/AHRQ-CDS-Connect-PAIN-MANAGEMENT-SUMMARY/static/js/main.4485b4b4.chunk.js",
-    "runtime-launch.js": "/AHRQ-CDS-Connect-PAIN-MANAGEMENT-SUMMARY/static/js/runtime-launch.9412925d.js",
-    "runtime-main.js": "/AHRQ-CDS-Connect-PAIN-MANAGEMENT-SUMMARY/static/js/runtime-main.51df1db0.js",
-    "static/js/5.8f645844.chunk.js": "/AHRQ-CDS-Connect-PAIN-MANAGEMENT-SUMMARY/static/js/5.8f645844.chunk.js",
-    "index.html": "/AHRQ-CDS-Connect-PAIN-MANAGEMENT-SUMMARY/index.html",
-    "launch.html": "/AHRQ-CDS-Connect-PAIN-MANAGEMENT-SUMMARY/launch.html",
-    "precache-manifest.0ec27d8eada3a955b044046f85749124.js": "/AHRQ-CDS-Connect-PAIN-MANAGEMENT-SUMMARY/precache-manifest.0ec27d8eada3a955b044046f85749124.js",
-    "service-worker.js": "/AHRQ-CDS-Connect-PAIN-MANAGEMENT-SUMMARY/service-worker.js",
-    "static/js/5.8f645844.chunk.js.LICENSE": "/AHRQ-CDS-Connect-PAIN-MANAGEMENT-SUMMARY/static/js/5.8f645844.chunk.js.LICENSE"
+    "static/js/0.1b7f5c91.chunk.js": "/pain-manager/static/js/0.1b7f5c91.chunk.js",
+    "launch.js": "/pain-manager/static/js/launch.4ea324bd.chunk.js",
+    "main.css": "/pain-manager/static/css/main.d8b70692.chunk.css",
+    "main.js": "/pain-manager/static/js/main.fdbd0af8.chunk.js",
+    "runtime-launch.js": "/pain-manager/static/js/runtime-launch.b073301c.js",
+    "runtime-main.js": "/pain-manager/static/js/runtime-main.ceedfe91.js",
+    "static/js/5.877ba5ce.chunk.js": "/pain-manager/static/js/5.877ba5ce.chunk.js",
+    "index.html": "/pain-manager/index.html",
+    "launch.html": "/pain-manager/launch.html",
+    "precache-manifest.ebe4fa2af57b44ee26eb6b8f3e7ed48f.js": "/pain-manager/precache-manifest.ebe4fa2af57b44ee26eb6b8f3e7ed48f.js",
+    "service-worker.js": "/pain-manager/service-worker.js",
+    "static/js/5.877ba5ce.chunk.js.LICENSE": "/pain-manager/static/js/5.877ba5ce.chunk.js.LICENSE"
   },
   "entrypoints": [
-    "static/js/runtime-main.51df1db0.js",
-    "static/js/0.dc1b04d0.chunk.js",
-    "static/js/5.8f645844.chunk.js",
+    "static/js/runtime-main.ceedfe91.js",
+    "static/js/0.1b7f5c91.chunk.js",
+    "static/js/5.877ba5ce.chunk.js",
     "static/css/main.d8b70692.chunk.css",
-    "static/js/main.4485b4b4.chunk.js"
+    "static/js/main.fdbd0af8.chunk.js"
   ]
 }
