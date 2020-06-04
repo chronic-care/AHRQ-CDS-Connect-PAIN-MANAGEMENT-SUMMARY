@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/pain-manager/precache-manifest.ebe4fa2af57b44ee26eb6b8f3e7ed48f.js"
+  "/AHRQ-CDS-Connect-PAIN-MANAGEMENT-SUMMARY/precache-manifest.f5b1d757dbc126be52b79d9265cbcd27.js"
 );
 
 self.addEventListener('message', (event) => {
@@ -33,7 +33,7 @@ workbox.core.clientsClaim();
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute(workbox.precaching.getCacheKeyForURL("/pain-manager/index.html"), {
+workbox.routing.registerNavigationRoute(workbox.precaching.getCacheKeyForURL("/AHRQ-CDS-Connect-PAIN-MANAGEMENT-SUMMARY/index.html"), {
   
   blacklist: [/^\/_/,/\/[^\/?]+\.[^\/]+$/],
 });
