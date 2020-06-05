@@ -1,23 +1,23 @@
 {
   "files": {
-    "static/js/0.ed04748e.chunk.js": "/AHRQ-CDS-Connect-PAIN-MANAGEMENT-SUMMARY/static/js/0.ed04748e.chunk.js",
-    "launch.js": "/AHRQ-CDS-Connect-PAIN-MANAGEMENT-SUMMARY/static/js/launch.7eba8cba.chunk.js",
-    "main.css": "/AHRQ-CDS-Connect-PAIN-MANAGEMENT-SUMMARY/static/css/main.d8b70692.chunk.css",
-    "main.js": "/AHRQ-CDS-Connect-PAIN-MANAGEMENT-SUMMARY/static/js/main.56bb58b6.chunk.js",
-    "runtime-launch.js": "/AHRQ-CDS-Connect-PAIN-MANAGEMENT-SUMMARY/static/js/runtime-launch.9412925d.js",
-    "runtime-main.js": "/AHRQ-CDS-Connect-PAIN-MANAGEMENT-SUMMARY/static/js/runtime-main.51df1db0.js",
-    "static/js/5.8f645844.chunk.js": "/AHRQ-CDS-Connect-PAIN-MANAGEMENT-SUMMARY/static/js/5.8f645844.chunk.js",
-    "index.html": "/AHRQ-CDS-Connect-PAIN-MANAGEMENT-SUMMARY/index.html",
-    "launch.html": "/AHRQ-CDS-Connect-PAIN-MANAGEMENT-SUMMARY/launch.html",
-    "precache-manifest.f5b1d757dbc126be52b79d9265cbcd27.js": "/AHRQ-CDS-Connect-PAIN-MANAGEMENT-SUMMARY/precache-manifest.f5b1d757dbc126be52b79d9265cbcd27.js",
-    "service-worker.js": "/AHRQ-CDS-Connect-PAIN-MANAGEMENT-SUMMARY/service-worker.js",
-    "static/js/5.8f645844.chunk.js.LICENSE": "/AHRQ-CDS-Connect-PAIN-MANAGEMENT-SUMMARY/static/js/5.8f645844.chunk.js.LICENSE"
+    "static/js/0.8c230a8d.chunk.js": "./static/js/0.8c230a8d.chunk.js",
+    "launch.js": "./static/js/launch.8e22a59c.chunk.js",
+    "main.css": "./static/css/main.d8b70692.chunk.css",
+    "main.js": "./static/js/main.08feaa81.chunk.js",
+    "runtime-launch.js": "./static/js/runtime-launch.68692fc9.js",
+    "runtime-main.js": "./static/js/runtime-main.a188041c.js",
+    "static/js/5.87238c95.chunk.js": "./static/js/5.87238c95.chunk.js",
+    "index.html": "./index.html",
+    "launch.html": "./launch.html",
+    "precache-manifest.aef5485fdd39161a5c96a33a986517ec.js": "./precache-manifest.aef5485fdd39161a5c96a33a986517ec.js",
+    "service-worker.js": "./service-worker.js",
+    "static/js/5.87238c95.chunk.js.LICENSE": "./static/js/5.87238c95.chunk.js.LICENSE"
   },
   "entrypoints": [
-    "static/js/runtime-main.51df1db0.js",
-    "static/js/0.ed04748e.chunk.js",
-    "static/js/5.8f645844.chunk.js",
+    "static/js/runtime-main.a188041c.js",
+    "static/js/0.8c230a8d.chunk.js",
+    "static/js/5.87238c95.chunk.js",
     "static/css/main.d8b70692.chunk.css",
-    "static/js/main.56bb58b6.chunk.js"
+    "static/js/main.08feaa81.chunk.js"
   ]
 }
