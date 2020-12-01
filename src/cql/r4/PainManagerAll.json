@@ -4999,19 +4999,30 @@
                      }, {
                         "name" : "MME",
                         "value" : {
-                           "type" : "ToString",
-                           "operand" : {
-                              "name" : "TotalMME",
-                              "libraryName" : "MMECalculator",
-                              "type" : "FunctionRef",
-                              "operand" : [ {
-                                 "type" : "List",
-                                 "element" : [ {
-                                    "name" : "O",
-                                    "type" : "AliasRef"
+                           "type" : "ReplaceMatches",
+                           "operand" : [ {
+                              "type" : "ToString",
+                              "operand" : {
+                                 "name" : "TotalMME",
+                                 "libraryName" : "MMECalculator",
+                                 "type" : "FunctionRef",
+                                 "operand" : [ {
+                                    "type" : "List",
+                                    "element" : [ {
+                                       "name" : "O",
+                                       "type" : "AliasRef"
+                                    } ]
                                  } ]
-                              } ]
-                           }
+                              }
+                           }, {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "/^{MME}/d/$",
+                              "type" : "Literal"
+                           }, {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "MME/Day",
+                              "type" : "Literal"
+                           } ]
                         }
                      }, {
                         "name" : "End",

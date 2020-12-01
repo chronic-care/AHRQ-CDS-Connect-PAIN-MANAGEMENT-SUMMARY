@@ -864,7 +864,8 @@ define ReportOpioidMedicationRequests:
     Type:  'Request',
     Name:  ConceptText(O.medication as FHIR.CodeableConcept),
     Start: DateTimeText(O.authoredOn),
-    MME: ToString(MMECalculator.TotalMME(List{O})),
+//    MME: ToString(MMECalculator.TotalMME(List{O})),
+    MME: ReplaceMatches(ToString(MMECalculator.TotalMME(List{O})),'/^{MME}/d/$', 'MME/Day'),
     End: null as String, // MedicationRequest end date not supported in R4,
     Sig: (singleton from (O.dosageInstruction)).text,
     Status: O.status.value
