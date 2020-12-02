@@ -23,6 +23,7 @@ function generateUuid() {
 
 export default class Landing extends Component<any, any> {
     summaryMapData: any = summaryMap;
+    siteConfig: any = {};
     constructor(props: any) {
         super(props);
         this.state = {
@@ -71,6 +72,18 @@ export default class Landing extends Component<any, any> {
         Hook(window.console, log => {
             this.setState(({ logs }) => ({ logs: [...logs, Decode(log)] }))
         })
+
+        const links = () => {
+            console.log('runngin:', )
+            let anchors = document.getElementsByTagName('a');
+            console.log('anchors: ', anchors)
+            for (var i = 0; i < anchors.length; i++) {
+                anchors[i].removeAttribute("href");
+                anchors[i].href = "http://www.google.com";
+                console.log('a: ', anchors[i])
+            }
+        }
+        links();
     }
 
     componentDidUpdate() {
@@ -152,7 +165,7 @@ export default class Landing extends Component<any, any> {
                     const data = summary[subSection.dataKeySource][subSection.dataKey];
                     const entries = (Array.isArray(data) ? data : [data]).filter((r) => {
                         // convert sig object to string value
-                        if(r['Sig']) {
+                        if (r['Sig']) {
                             r['Sig'] = r['Sig'].value
                         }
                         return r != null;
@@ -181,7 +194,7 @@ export default class Landing extends Component<any, any> {
                     }
                 }
             }, (error) => {
-                console.error('Error: ',error)
+                console.error('Error: ', error)
             });
         });
 
@@ -191,13 +204,14 @@ export default class Landing extends Component<any, any> {
                 return response.json();
             })
             .then((config: any) => {
+                this.siteConfig = config;
                 // Only provide analytics if the endpoint has been set
-                if (config.analytics_endpoint) {
-                    this.getAnalyticsData(config.analytics_endpoint, config.x_api_key, summary);
+                if (this.siteConfig.analytics_endpoint) {
+                    this.getAnalyticsData(this.siteConfig.analytics_endpoint, this.siteConfig.x_api_key, summary);
                 }
             })
             .catch((err: any) => {
-                console.error('Error: ',err)
+                console.error('Error: ', err)
             });
 
         return { sectionFlags, flaggedCount };
