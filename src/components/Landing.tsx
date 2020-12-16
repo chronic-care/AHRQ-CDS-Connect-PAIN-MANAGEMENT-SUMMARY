@@ -38,7 +38,10 @@ export default class Landing extends Component<any, any> {
     }
 
     componentDidMount() {
-        executeElm(this.state.collector).then((result: any) => {
+        executeElm(this.state.collector)
+        .then((result: any) => {
+            result.Summary["PDMPMedications"] = [];
+
             this.setState({ loading: false });
             const { sectionFlags, flaggedCount } = this.processSummary(result.Summary);
             this.setState({ result, sectionFlags, flaggedCount });
@@ -236,6 +239,7 @@ export default class Landing extends Component<any, any> {
         const numMedicalHistoryEntries = sumit(summary.PertinentConditions || {});
         const numPainEntries = sumit(summary.PainAssessments || {});
         const numTreatmentsEntries = sumit(summary.HistoricalTreatments || {});
+        const numPDMPEntries = sumit(summary.PDMPMedications || {});
         const numRiskEntries =
             sumit(summary.RiskConsiderations || {}) +
             sumit(summary.MiscellaneousItems || {}); // TODO: update when CQL updates
@@ -263,6 +267,7 @@ export default class Landing extends Component<any, any> {
                     numMedicalHistoryEntries={numMedicalHistoryEntries}
                     numPainEntries={numPainEntries}
                     numTreatmentsEntries={numTreatmentsEntries}
+                    numPDMPEntries={numPDMPEntries}
                     numRiskEntries={numRiskEntries}
                     questionText={this.state.questionText}
                 />

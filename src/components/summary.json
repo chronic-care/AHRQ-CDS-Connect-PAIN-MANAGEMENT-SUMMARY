@@ -220,13 +220,79 @@
           "headers": {
             "Treatment": "Treatment",
             "Effectiveness": "Effectiveness"
-            
+
           },
           "flags": [
             {
               "flag": "ifNone",
               "flagText": "Absence of self-reported treatments from MyPAIN"
             }
+          ]
+        }
+      ]
+    }
+  ],
+  "PDMPMedications": [
+    {
+      "name": "PDMP Opioid Medications",
+      "dataKey": "PDMPOpioidMedications",
+      "dataKeySource": "PDMPMedications",
+      "info": [
+        {
+          "type": "elements",
+          "description": "PDMP Medication queries the following elements:",
+          "elements": [
+            {
+              "name": "Medication dispense records from PDMP",
+              "status": "any",
+              "lookback": "2 years"
+            }
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "headers": {
+            "Name": "Name",
+            "Quantity": { "key": "Quantity", "formatter": "quantityFormat" },
+            "Date Given": { "key": "Given", "formatter": "datishFormat" },
+            "Dispenser": "Dispenser"
+          },
+          "flags": [
+            {
+              "flag": "always",
+              "flagText": "Opioid medication"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PDMP Other Medications",
+      "dataKey": "PDMPOtherMedications",
+      "dataKeySource": "PDMPMedications",
+      "info": [
+        {
+          "type": "elements",
+          "description": "Other Medications queries the following elements:",
+          "elements": [
+            {
+              "name": "Other medication dispensations from PDMP",
+              "status": "any",
+              "lookback": "2 years"
+            }
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "headers": {
+            "Name": "Name",
+            "Quantity": { "key": "Quantity", "formatter": "quantityFormat" },
+            "Date Given": { "key": "Given", "formatter": "datishFormat" },
+            "Dispenser": "Dispenser"
+          },
+          "flags": [
           ]
         }
       ]

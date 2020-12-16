@@ -436,6 +436,8 @@ export default class Summary extends Component<any, any> {
             title = 'Pertinent Conditions';
         } else if (section === 'CurrentPertinentTreatments') {
             title = 'Current Pertinent Treatments';
+        } else if (section === 'PDMPMedications') {
+            title = 'Prescription Drug Monitoring Program (PDMP)';
         } else if (section === 'UrineDrugScreening') {
             title = 'Urine Drug Screening';
         } else if (section === 'SharedDecisionMaking') {
@@ -492,6 +494,11 @@ export default class Summary extends Component<any, any> {
                                 {this.renderSection("CurrentPertinentTreatments")}
                             </Collapsible>
 
+                            <Collapsible tabIndex={0} trigger={this.renderSectionHeader("PDMPMedications")}
+                                open={false}>
+                                {this.renderSection("PDMPMedications")}
+                            </Collapsible>
+
                             <Collapsible tabIndex={0} trigger={this.renderSectionHeader("UrineDrugScreening")} open={summary.UrineDrugScreening.Recommendation10Text ? true : false}>
                                 {this.renderSection("UrineDrugScreening")}
                             </Collapsible>
@@ -545,7 +552,7 @@ export default class Summary extends Component<any, any> {
                     {this.state.appConfig ? (<Footer key={this.state.appConfig}>{this.state.appConfig}</Footer>) : (
                         <Footer key={this.state.appConfig}></Footer>
                     )}
-                
+
 
                     <DevTools
                         collector={collector}
@@ -585,5 +592,6 @@ Summary.propTypes = {
     numMedicalHistoryEntries: PropTypes.number.isRequired,
     numPainEntries: PropTypes.number.isRequired,
     numTreatmentsEntries: PropTypes.number.isRequired,
+    numPDMPEntries: PropTypes.number.isRequired,
     numRiskEntries: PropTypes.number.isRequired
 };
