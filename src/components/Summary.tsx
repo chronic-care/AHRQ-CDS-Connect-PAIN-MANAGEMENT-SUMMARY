@@ -495,7 +495,7 @@ export default class Summary extends Component<any, any> {
                             </Collapsible>
 
                             <Collapsible tabIndex={0} trigger={this.renderSectionHeader("PDMPMedications")}
-                                open={false}>
+                                open={true}>
                                 {this.renderSection("PDMPMedications")}
                             </Collapsible>
 

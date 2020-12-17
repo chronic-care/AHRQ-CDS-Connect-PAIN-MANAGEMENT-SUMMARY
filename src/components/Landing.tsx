@@ -6,6 +6,7 @@ import executeElm from '../utils/executeELM';
 import sumit from '../helpers/sumit';
 import flagit from '../helpers/flagit';
 import summaryMap from './summary.json';
+import queryPdmpData from './PdmpFhirQuery';
 
 import Summary from './Summary';
 import Spinner from '../elements/Spinner';
@@ -38,9 +39,16 @@ export default class Landing extends Component<any, any> {
     }
 
     componentDidMount() {
+        var result;
         executeElm(this.state.collector)
-        .then((result: any) => {
-            result.Summary["PDMPMedications"] = [];
+        .then((elmResult) => {
+            result = elmResult
+        })
+        .then(() => queryPdmpData(this.state.collector))
+        .then((pdmpResult) => {
+            result.Summary["PDMPMedications"] = []
+            result.Summary["PDMPMedications"]["PDMPOpioidMedications"] = pdmpResult;
+            // result.Summary["PDMPMedications"]["PDMPOtherMedications"] = pdmpResult;
 
             this.setState({ loading: false });
             const { sectionFlags, flaggedCount } = this.processSummary(result.Summary);

@@ -253,8 +253,10 @@
       "tables": [
         {
           "headers": {
-            "Name": "Name",
+            "Medication": "Name",
+            "MME/Day": "MME",
             "Quantity": { "key": "Quantity", "formatter": "quantityFormat" },
+            "Days Supply": { "key": "DaysSupply", "formatter": "quantityFormat" },
             "Date Given": { "key": "Given", "formatter": "datishFormat" },
             "Dispenser": "Dispenser"
           },
@@ -287,8 +289,9 @@
       "tables": [
         {
           "headers": {
-            "Name": "Name",
+            "Medication": "Name",
             "Quantity": { "key": "Quantity", "formatter": "quantityFormat" },
+            "Days Supply": { "key": "DaysSupply", "formatter": "quantityFormat" },
             "Date Given": { "key": "Given", "formatter": "datishFormat" },
             "Dispenser": "Dispenser"
           },
