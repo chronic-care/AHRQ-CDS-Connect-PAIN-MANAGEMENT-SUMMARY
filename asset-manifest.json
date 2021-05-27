@@ -1,23 +1,24 @@
 {
   "files": {
-    "static/js/0.b5d34d16.chunk.js": "/AHRQ-CDS-Connect-PAIN-MANAGEMENT-SUMMARY/static/js/0.b5d34d16.chunk.js",
-    "launch.js": "/AHRQ-CDS-Connect-PAIN-MANAGEMENT-SUMMARY/static/js/launch.d592a7bf.chunk.js",
-    "main.css": "/AHRQ-CDS-Connect-PAIN-MANAGEMENT-SUMMARY/static/css/main.d8b70692.chunk.css",
-    "main.js": "/AHRQ-CDS-Connect-PAIN-MANAGEMENT-SUMMARY/static/js/main.5fd22265.chunk.js",
-    "runtime-launch.js": "/AHRQ-CDS-Connect-PAIN-MANAGEMENT-SUMMARY/static/js/runtime-launch.9412925d.js",
-    "runtime-main.js": "/AHRQ-CDS-Connect-PAIN-MANAGEMENT-SUMMARY/static/js/runtime-main.51df1db0.js",
-    "static/js/5.0273eadc.chunk.js": "/AHRQ-CDS-Connect-PAIN-MANAGEMENT-SUMMARY/static/js/5.0273eadc.chunk.js",
-    "index.html": "/AHRQ-CDS-Connect-PAIN-MANAGEMENT-SUMMARY/index.html",
-    "launch.html": "/AHRQ-CDS-Connect-PAIN-MANAGEMENT-SUMMARY/launch.html",
-    "precache-manifest.c3f59e4f2f976685ea622ad196285571.js": "/AHRQ-CDS-Connect-PAIN-MANAGEMENT-SUMMARY/precache-manifest.c3f59e4f2f976685ea622ad196285571.js",
-    "service-worker.js": "/AHRQ-CDS-Connect-PAIN-MANAGEMENT-SUMMARY/service-worker.js",
-    "static/js/5.0273eadc.chunk.js.LICENSE": "/AHRQ-CDS-Connect-PAIN-MANAGEMENT-SUMMARY/static/js/5.0273eadc.chunk.js.LICENSE"
+    "static/js/0.3a35050b.chunk.js": "/static/js/0.3a35050b.chunk.js",
+    "launch.js": "/static/js/launch.73f592a7.chunk.js",
+    "main.css": "/static/css/main.ba6a6dc6.chunk.css",
+    "main.js": "/static/js/main.bd3c84c4.chunk.js",
+    "runtime-launch.js": "/static/js/runtime-launch.2b01cc60.js",
+    "runtime-main.js": "/static/js/runtime-main.36e65747.js",
+    "static/js/5.22373a93.chunk.js": "/static/js/5.22373a93.chunk.js",
+    "index.html": "/index.html",
+    "launch.html": "/launch.html",
+    "precache-manifest.51b19a12346c6597deb63cc84420bc93.js": "/precache-manifest.51b19a12346c6597deb63cc84420bc93.js",
+    "service-worker.js": "/service-worker.js",
+    "static/js/0.3a35050b.chunk.js.LICENSE.txt": "/static/js/0.3a35050b.chunk.js.LICENSE.txt",
+    "static/js/5.22373a93.chunk.js.LICENSE.txt": "/static/js/5.22373a93.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.51df1db0.js",
-    "static/js/0.b5d34d16.chunk.js",
-    "static/js/5.0273eadc.chunk.js",
-    "static/css/main.d8b70692.chunk.css",
-    "static/js/main.5fd22265.chunk.js"
+    "static/js/runtime-main.36e65747.js",
+    "static/js/0.3a35050b.chunk.js",
+    "static/js/5.22373a93.chunk.js",
+    "static/css/main.ba6a6dc6.chunk.css",
+    "static/js/main.bd3c84c4.chunk.js"
   ]
 }

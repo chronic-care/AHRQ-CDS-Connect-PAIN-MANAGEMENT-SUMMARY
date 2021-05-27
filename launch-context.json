@@ -1,6 +1,5 @@
 {
-  "clientId": "6c12dff4-24e7-4475-a742-b08972c4ea27",
-  "scope": "patient/*.read launch/patient",
-  "fhirServiceUrl": "http://cds4cpm-sandbox.alphora.com/cqf-ruler-r4/fhir/",
+  "clientId": "ec90da3c-00ae-4184-b40e-f97fa39430b3",
+  "scope": "patient/*.read launch launch/patient",
   "completeInTarget": true
 }
