@@ -1,5 +1,5 @@
 {
   "clientId": "ec90da3c-00ae-4184-b40e-f97fa39430b3",
-  "scope": "patient/*.read launch launch/patient",
+  "scope": "launch openid fhirUser patient/*.read",
   "completeInTarget": true
 }
