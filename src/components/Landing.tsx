@@ -6,10 +6,14 @@ import executeElm from '../utils/executeELM';
 import sumit from '../helpers/sumit';
 import flagit from '../helpers/flagit';
 import summaryMap from './summary.json';
-import queryPdmpData from './PdmpFhirQuery';
+import { EHRData, PDMPData } from '../models/fhirResources';
+import { CQLSummary } from '../models/cqlSummary';
 
 import Summary from './Summary';
 import Spinner from '../elements/Spinner';
+import { getEHRData } from '../service/fhirServiceEHR'
+import { getPDMPData } from '../service/fhirServicePDMP'
+import { executeCQLSummary, getPDMPDisplaySummary } from '../service/cqlServicePDMP'
 import executeExternalCDSCall from "../utils/executeExternalCDSHooksCall";
 import executeInternalCDSCall from "../utils/executeInternalCDSHooksCall";
 import { Hook, Console, Decode } from 'console-feed'
@@ -27,6 +31,8 @@ export default class Landing extends Component<any, any> {
     constructor(props: any) {
         super(props);
         this.state = {
+            ehrData: null,
+            pdmpData: null,
             result: null,
             loading: true,
             collector: [],
@@ -44,7 +50,22 @@ export default class Landing extends Component<any, any> {
         .then((elmResult) => {
             result = elmResult
         })
-        .then(() => queryPdmpData(this.state.collector))
+        .then(() => {
+            return getEHRData();
+        })
+        .then((ehrData: EHRData) => {
+            this.setState({ ehrData: ehrData });
+            return getPDMPData(ehrData, 'KY');
+        })
+        .then((pdmpData: PDMPData) => {
+            this.setState({ pdmpData: pdmpData });
+            return executeCQLSummary(pdmpData, this.state.ehrData);
+        })
+        .then((cqlSummary: CQLSummary) => {
+            let report = getPDMPDisplaySummary(cqlSummary)
+            console.log("PDMP Report = " + JSON.stringify(report))
+            return report
+        })
         .then((pdmpResult) => {
             result.Summary["PDMPMedications"] = []
             result.Summary["PDMPMedications"]["PDMPOpioidMedications"] = pdmpResult;
@@ -143,10 +164,10 @@ export default class Landing extends Component<any, any> {
 
         if (endpoint) {
 
-            fetch(endpoint, requestOptions)
-                .catch((err) => {
-                    console.error('Error: ', err);
-                });
+            // fetch(endpoint, requestOptions)
+            //     .catch((err) => {
+            //         console.error('Error: ', err);
+            //     });
         }
 
     }

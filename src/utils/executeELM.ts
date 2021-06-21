@@ -1,6 +1,7 @@
 import FHIR from 'fhirclient';
 import cql from 'cql-execution';
 import cqlfhir from '../helpers/cql-exec-fhir';
+// import cqlfhir from 'cql-exec-fhir';
 import extractResourcesFromELM from './extractResourcesFromELM';
 import dstu2FactorsELM from '../cql/dstu2/Factors_to_Consider_in_Managing_Chronic_Pain.json'
 import dstu2CommonsELM from '../cql/dstu2/CDS_Connect_Commons_for_FHIRv102.json';

@@ -253,12 +253,14 @@
       "tables": [
         {
           "headers": {
-            "Medication": "Name",
-            "MME/Day": "MME",
-            "Quantity": { "key": "Quantity", "formatter": "quantityFormat" },
-            "Days Supply": { "key": "DaysSupply", "formatter": "quantityFormat" },
-            "Date Given": { "key": "Given", "formatter": "datishFormat" },
-            "Dispenser": "Dispenser"
+            "Date Filled": "DateFilled",
+            "Drug Name": { "key": "Name", "formatter": "textFormat", "minWidth": 40 },
+            "Quantity": { "key": "Quantity", "formatter": "quantityFormat", "maxWidth": 20 },
+            "Days Supply": { "key": "DaysSupply", "formatter": "quantityFormat", "maxWidth": 20 },
+            "Prescriber Name": "PrescriberName",
+            "Pharmacy Name": "PharmacyName",
+            "Pharmacy City": "PharmacyCity",
+            "Patient DOB": "PatientDOB"
           },
           "flags": [
             {

@@ -5,6 +5,11 @@ const dateRE = /^\d{4}-\d{2}-\d{2}(T|\b)/; // loosely matches '2012-04-05' or '2
 const quantityRE = /^(\d+(\.\d+)?)(\s+(\S+))?$/; // matches '40' or '40 a' (a is UCUM unit for years)
 const booleanRE = /^(true|false)$/; // matches 'true' or 'false'
 
+export function textFormat(result, input) {
+  if (input == null) return '';
+  return input;
+}
+
 export function dateFormat(result, input) {
   if (input == null) return '';
   return moment.parseZone(input).format('YYYY-MMM-DD');
