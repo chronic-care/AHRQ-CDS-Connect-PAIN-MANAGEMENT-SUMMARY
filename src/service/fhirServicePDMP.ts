@@ -59,7 +59,6 @@ export const getPDMPData = async (ehrData: EHRData, state: String): Promise<PDMP
     + '&authorizingPrescription.dispenseRequest.validityPeriod=' + periodStart + '&authorizingPrescription.dispenseRequest.validityPeriod=' + periodEnd + '&practitioner.name=' + practitionerName + '&practitioner.role=' + practitionerRole + '&_state=' + state + '&_format=json';
   // console.log("PDMP Query = " + dispenseQuery)
 
-  // const proxyURL = 'https://cors-anywhere.herokuapp.com/';
   const response = await fetch(pdmpEndpoint + dispenseQuery, requestOptions);
   if (!response.ok) {
     const message = `A PDMP server error has occured: ${response.status}`;
@@ -67,7 +66,6 @@ export const getPDMPData = async (ehrData: EHRData, state: String): Promise<PDMP
     console.log(message);
   }
   const responseBody = await response.json();
-  // console.log("PDMP Response: " + JSON.stringify(responseBody));
 
   const pdmpBundle = resourcesFrom(responseBody);
   const dispensations = pdmpBundle.filter((resource: Resource) => resource.resourceType === 'MedicationDispense') as [MedicationDispense];

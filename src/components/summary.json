@@ -258,6 +258,7 @@
             "Quantity": { "key": "Quantity", "formatter": "quantityFormat", "maxWidth": 20 },
             "Days Supply": { "key": "DaysSupply", "formatter": "quantityFormat", "maxWidth": 20 },
             "Prescriber Name": "PrescriberName",
+            "Prescriber City": "PrescriberCity",
             "Pharmacy Name": "PharmacyName",
             "Pharmacy City": "PharmacyCity",
             "Patient DOB": "PatientDOB"

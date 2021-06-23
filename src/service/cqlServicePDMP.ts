@@ -4,7 +4,7 @@ import cql from 'cql-execution';
 // import cqlfhir from 'cql-exec-fhir';
 import cqlfhir from '../helpers/cql-exec-fhir';
 
-import { Resource, MedicationDispense, MedicationRequest } from '../fhir-types/fhir-r4';
+import { Resource, Medication, MedicationDispense, MedicationRequest } from '../fhir-types/fhir-r4';
 import { EHRData, PDMPData } from '../models/fhirResources';
 import { CQLSummary, MedicationDispenseSummary, PDMPReport } from '../models/cqlSummary';
 import { uuidv4 } from './fhirServicePDMP'
@@ -36,7 +36,6 @@ function getPatientSource(medDispense: MedicationDispense, ehrData: EHRData): un
     ]
   };
 
-  // const patientSource = cqlFhirModule.PatientSource.FHIRv300();
   const patientSource = cqlFhirModule.PatientSource.FHIRv401();
   patientSource.loadBundles([fhirBundle]);
 
@@ -54,6 +53,11 @@ function extractContained(medDispense: MedicationDispense): [Resource] {
   }
   let med = extractFirstContained(medDispense, 'Medication')
   if (med != null) {
+    // If Medication name contains '/', add a space to improve display word wrap.
+    let coding = (med as Medication).code?.coding?.[0]
+    if (coding !== null) {
+      coding!.display = coding?.display?.replace('/', '/ ')
+    }
     resources.push(med)
     medDispense.medicationReference = {reference: 'Medication/'+med.id}
   }
@@ -108,6 +112,7 @@ export const getPDMPDisplaySummary = ((summary: CQLSummary) => {
       PharmacyName: dispenseSummary[0].pharmacyName,
       PharmacyCity: dispenseSummary[0].pharmacyCity,
       PrescriberName: dispenseSummary[0].prescriberName,
+      PrescriberCity: dispenseSummary[0].prescriberCity,
       PatientDOB: dispenseSummary[0].patientBirthDate
     }
   })

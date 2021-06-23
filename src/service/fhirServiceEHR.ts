@@ -34,9 +34,7 @@ export const getEHRData = async (): Promise<EHRData> => {
   const clinicianPath = client.getFhirUser();
   const fhirUser: Practitioner | undefined = clinicianPath ? await client.request(clinicianPath) : undefined;
 
-  const conditions = (hasScope('Condition.read')
-    ? resourcesFrom(await client.patient.request(conditionsPath, fhirOptions) as fhirclient.JsonObject)
-    : new Array()) as [Condition];
+  const conditions = resourcesFrom(await client.patient.request(conditionsPath, fhirOptions) as fhirclient.JsonObject) as [Condition];
   const prescriptions = resourcesFrom(await client.patient.request(medicationRequestPath, fhirOptions) as fhirclient.JsonObject) as [MedicationRequest];
   const labResults = resourcesFrom(await client.patient.request(labResultsPath, fhirOptions) as fhirclient.JsonObject) as [Observation];
   // const procedures = resourcesFrom(await client.patient.request(proceduresPath, fhirOptions) as fhirclient.JsonObject) as [Procedure];
