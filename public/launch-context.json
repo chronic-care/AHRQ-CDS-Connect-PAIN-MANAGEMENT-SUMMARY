@@ -1,5 +1,7 @@
 {
-  "clientId": "2ab02bb4-dfae-4af0-80dd-ea24a0eed547",
+  "clientId_localhost": "7f7a677d-1aba-482b-bbd7-80dfc3c44c53",
+  "clientId_hosted": "2ab02bb4-dfae-4af0-80dd-ea24a0eed547",
+  "clientId": "7f7a677d-1aba-482b-bbd7-80dfc3c44c53",
   "scope": "launch openid fhirUser patient/*.read",
   "completeInTarget": true
 }

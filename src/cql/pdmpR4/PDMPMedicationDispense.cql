@@ -18,25 +18,27 @@ include FHIRHelpers version '4.0.1'
 // context Unfiltered   // not supported
 context Patient
 
-define ReportingState: 'KY'
-
-/*
 define ReportingState:
-  First([Basic] B
-    let value: Extension(B, 'http://rxcheck.org/fhir/profiles/status-resource#system').value
+  singleton from ([Basic] B
+    let value: Extension(B, 'http://rxcheck.org/fhir/profiles/status-resource#system').value.value
     return Last(Split(value,':'))
   )
 
 define PDMPStatus:
-  First([Basic] B
-    return Extension(B, 'http://rxcheck.org/fhir/profiles/status-resource#status').value
+  singleton from ([Basic] B
+    return Extension(B, 'http://rxcheck.org/fhir/profiles/status-resource#status').value.value
   )
 
 define PDMPMessage:
-  First([Basic] B
-    return Extension(B, 'http://rxcheck.org/fhir/profiles/status-resource#message').value
+  singleton from ([Basic] B
+    return Extension(B, 'http://rxcheck.org/fhir/profiles/status-resource#message').value.value
   )
-*/
+
+define StatusSummary: {
+  "status": PDMPStatus,
+  "message": PDMPMessage,
+  "reportingState": ReportingState
+}
 
 define MedicationDispenseSummary:
   [MedicationDispense] medDisp
@@ -67,9 +69,6 @@ define function PatientNameText(patient Patient):
     GetPatientName(patient, 'usual'),
     patient.name[0]) ) Name
   return HumanNameText(Name)
-  //return Coalesce(Name.text.value,
-  // (Combine(Name.given G return G.value, ' ') + ' ' + Name.family.value)
-  //)
 
 define function HumanNameText(name HumanName):
   Coalesce(name.text.value,

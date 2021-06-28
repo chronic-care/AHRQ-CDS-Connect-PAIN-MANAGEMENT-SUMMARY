@@ -13,7 +13,7 @@ import Summary from './Summary';
 import Spinner from '../elements/Spinner';
 import { getEHRData } from '../service/fhirServiceEHR'
 import { getPDMPData } from '../service/fhirServicePDMP'
-import { executeCQLSummary, getPDMPDisplaySummary } from '../service/cqlServicePDMP'
+import { executeCQLSummary, getPDMPDispenseSummary } from '../service/cqlServicePDMP'
 import executeExternalCDSCall from "../utils/executeExternalCDSHooksCall";
 import executeInternalCDSCall from "../utils/executeInternalCDSHooksCall";
 import { Hook, Console, Decode } from 'console-feed'
@@ -62,14 +62,14 @@ export default class Landing extends Component<any, any> {
             return executeCQLSummary(pdmpData, this.state.ehrData);
         })
         .then((cqlSummary: CQLSummary) => {
-            let report = getPDMPDisplaySummary(cqlSummary)
+            let report = getPDMPDispenseSummary(cqlSummary)
             console.log("PDMP Report = " + JSON.stringify(report))
-            return report
-        })
-        .then((pdmpResult) => {
+        //     return report
+        // })
+        // .then((pdmpResult) => {
             result.Summary["PDMPMedications"] = []
-            result.Summary["PDMPMedications"]["PDMPOpioidMedications"] = pdmpResult;
-            // result.Summary["PDMPMedications"]["PDMPOtherMedications"] = pdmpResult;
+            result.Summary["PDMPMedications"]["PDMPStatus"] = cqlSummary.pdmpStatus;
+            result.Summary["PDMPMedications"]["PDMPOpioidMedications"] = report;
 
             this.setState({ loading: false });
             const { sectionFlags, flaggedCount } = this.processSummary(result.Summary);

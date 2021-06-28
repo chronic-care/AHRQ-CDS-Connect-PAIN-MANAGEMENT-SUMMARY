@@ -234,7 +234,29 @@
   ],
   "PDMPMedications": [
     {
-      "name": "PDMP Opioid Medications",
+      "name": "PDMP Report Status",
+      "dataKey": "PDMPStatus",
+      "dataKeySource": "PDMPMedications",
+      "info": [
+        {
+          "type": "elements",
+          "description": "Status of PDMP queries"
+        }
+      ],
+      "tables": [
+        {
+          "headers": {
+            "Reporting State": "reportingState",
+            "Status": "status",
+            "Message": "message"
+          },
+          "flags": [
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PDMP Medications",
       "dataKey": "PDMPOpioidMedications",
       "dataKeySource": "PDMPMedications",
       "info": [
@@ -245,7 +267,7 @@
             {
               "name": "Medication dispense records from PDMP",
               "status": "any",
-              "lookback": "2 years"
+              "lookback": "1 years"
             }
           ]
         }
@@ -268,37 +290,6 @@
               "flag": "always",
               "flagText": "Opioid medication"
             }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "PDMP Other Medications",
-      "dataKey": "PDMPOtherMedications",
-      "dataKeySource": "PDMPMedications",
-      "info": [
-        {
-          "type": "elements",
-          "description": "Other Medications queries the following elements:",
-          "elements": [
-            {
-              "name": "Other medication dispensations from PDMP",
-              "status": "any",
-              "lookback": "2 years"
-            }
-          ]
-        }
-      ],
-      "tables": [
-        {
-          "headers": {
-            "Medication": "Name",
-            "Quantity": { "key": "Quantity", "formatter": "quantityFormat" },
-            "Days Supply": { "key": "DaysSupply", "formatter": "quantityFormat" },
-            "Date Given": { "key": "Given", "formatter": "datishFormat" },
-            "Dispenser": "Dispenser"
-          },
-          "flags": [
           ]
         }
       ]

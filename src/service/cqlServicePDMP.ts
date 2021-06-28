@@ -4,9 +4,9 @@ import cql from 'cql-execution';
 // import cqlfhir from 'cql-exec-fhir';
 import cqlfhir from '../helpers/cql-exec-fhir';
 
-import { Resource, Medication, MedicationDispense, MedicationRequest } from '../fhir-types/fhir-r4';
+import { Resource, Basic, Medication, MedicationDispense, MedicationRequest } from '../fhir-types/fhir-r4';
 import { EHRData, PDMPData } from '../models/fhirResources';
-import { CQLSummary, MedicationDispenseSummary, PDMPReport } from '../models/cqlSummary';
+import { CQLSummary, MedicationDispenseSummary, PDMPStatus } from '../models/cqlSummary';
 import { uuidv4 } from './fhirServicePDMP'
 
 import FHIRHelpers from '../cql/pdmpR4/FHIRHelpers.json';
@@ -25,6 +25,26 @@ const executor = new cql.Executor(summaryLibrary, codeService);
 
 function getBundleEntries(resources: [Resource]) {
   return resources.map((r: Resource) => ({ resource: r }))
+}
+
+function getHeadersSource(headers: [Basic], ehrData: EHRData): unknown {
+  let patientHeaders = headers.map((b) => {
+    b.subject = {reference: 'Patient/'+ (ehrData.patient.id ?? 'unknown')}
+    return b
+  }) as [Basic]
+  // console.log("headers = " + JSON.stringify(patientHeaders))
+
+  const fhirBundle = {
+    resourceType: 'Bundle',
+    entry: [{ resource: ehrData.patient }, { resource: ehrData.fhirUser },
+      ...getBundleEntries(patientHeaders)
+    ]
+  };
+
+  const patientSource = cqlFhirModule.PatientSource.FHIRv401();
+  patientSource.loadBundles([fhirBundle]);
+
+  return patientSource;
 }
 
 function getPatientSource(medDispense: MedicationDispense, ehrData: EHRData): unknown {
@@ -87,33 +107,42 @@ const extractFirstContained = (container: MedicationDispense, type: string) => {
 }
 
 export const executeCQLSummary = (pdmpData: PDMPData, ehrData: EHRData): CQLSummary => {
-  let summaries = new Array() as [MedicationDispenseSummary]
+  let headersSource = getHeadersSource(pdmpData.headers, ehrData)
+  let statusResult = executor.exec(headersSource)
+  let extractedSummary = statusResult.patientResults[Object.keys(statusResult.patientResults)[0]]
+  let statusSummary = extractedSummary.StatusSummary as PDMPStatus
 
+  let summaries = new Array() as [MedicationDispenseSummary]
   pdmpData.dispensations?.forEach((medDisp: MedicationDispense) => {
     let patientSource = getPatientSource(medDisp, ehrData)
     let results = executor.exec(patientSource)
     let extractedSummary = results.patientResults[Object.keys(results.patientResults)[0]]
     let dispenseSummary = extractedSummary.MedicationDispenseSummary as MedicationDispenseSummary
-    summaries.push (dispenseSummary)
-
-    console.log(JSON.stringify(dispenseSummary))
+    dispenseSummary[0].reportingState = statusSummary.reportingState
+    summaries.push (dispenseSummary?.[0])
+    // console.log(JSON.stringify(dispenseSummary))
   })
+  // console.log(JSON.stringify(summaries))
     
-  return { dispensations: summaries }
+  return { 
+    pdmpStatus: statusSummary,
+    dispensations: summaries 
+  }
 }
 
-export const getPDMPDisplaySummary = ((summary: CQLSummary) => {
+export const getPDMPDispenseSummary = ((summary: CQLSummary) => {
   return summary.dispensations.map((dispenseSummary) => {
     return {
-      DateFilled: formatDate(dispenseSummary[0].dateFilled),
-      Name: dispenseSummary[0].medicationName,
-      Quantity: dispenseSummary[0].quantity,
-      DaysSupply: dispenseSummary[0].daysSupply,
-      PharmacyName: dispenseSummary[0].pharmacyName,
-      PharmacyCity: dispenseSummary[0].pharmacyCity,
-      PrescriberName: dispenseSummary[0].prescriberName,
-      PrescriberCity: dispenseSummary[0].prescriberCity,
-      PatientDOB: dispenseSummary[0].patientBirthDate
+      DateFilled: formatDate(dispenseSummary.dateFilled),
+      Name: dispenseSummary.medicationName,
+      Quantity: dispenseSummary.quantity,
+      DaysSupply: dispenseSummary.daysSupply,
+      PharmacyName: dispenseSummary.pharmacyName,
+      PharmacyCity: dispenseSummary.pharmacyCity,
+      PrescriberName: dispenseSummary.prescriberName,
+      PrescriberCity: dispenseSummary.prescriberCity,
+      PatientDOB: dispenseSummary.patientBirthDate,
+      ReportingState: dispenseSummary.reportingState
     }
   })
 })
