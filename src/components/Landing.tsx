@@ -62,14 +62,10 @@ export default class Landing extends Component<any, any> {
             return executeCQLSummary(pdmpData, this.state.ehrData);
         })
         .then((cqlSummary: CQLSummary) => {
-            let report = getPDMPDispenseSummary(cqlSummary)
-            console.log("PDMP Report = " + JSON.stringify(report))
-        //     return report
-        // })
-        // .then((pdmpResult) => {
+            let dispensed = getPDMPDispenseSummary(cqlSummary)
             result.Summary["PDMPMedications"] = []
             result.Summary["PDMPMedications"]["PDMPStatus"] = cqlSummary.pdmpStatus;
-            result.Summary["PDMPMedications"]["PDMPOpioidMedications"] = report;
+            result.Summary["PDMPMedications"]["PDMPOpioidMedications"] = dispensed;
 
             this.setState({ loading: false });
             const { sectionFlags, flaggedCount } = this.processSummary(result.Summary);

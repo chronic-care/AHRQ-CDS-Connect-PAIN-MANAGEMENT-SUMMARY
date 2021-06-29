@@ -131,7 +131,8 @@ export const executeCQLSummary = (pdmpData: PDMPData, ehrData: EHRData): CQLSumm
 }
 
 export const getPDMPDispenseSummary = ((summary: CQLSummary) => {
-  return summary.dispensations.map((dispenseSummary) => {
+  let sortedList = summary.dispensations.sort((a, b) => new Date(b.dateFilled).getTime() - new Date(a.dateFilled).getTime())
+  return sortedList.map((dispenseSummary) => {
     return {
       DateFilled: formatDate(dispenseSummary.dateFilled),
       Name: dispenseSummary.medicationName,
