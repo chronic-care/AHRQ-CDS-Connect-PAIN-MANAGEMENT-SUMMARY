@@ -1,7 +1,6 @@
 // @ts-ignore
 import cql from 'cql-execution';
 // @ts-ignore
-// import cqlfhir from 'cql-exec-fhir';
 import cqlfhir from '../helpers/cql-exec-fhir';
 
 import { Resource, Basic, Medication, MedicationDispense, MedicationRequest } from '../fhir-types/fhir-r4';
@@ -120,7 +119,6 @@ export const executeCQLSummary = (pdmpData: PDMPData, ehrData: EHRData): CQLSumm
     let dispenseSummary = extractedSummary.MedicationDispenseSummary as MedicationDispenseSummary
     dispenseSummary[0].reportingState = statusSummary.reportingState
     summaries.push (dispenseSummary?.[0])
-    // console.log(JSON.stringify(dispenseSummary))
   })
   // console.log(JSON.stringify(summaries))
     
@@ -161,24 +159,3 @@ function formatDate(date): string {
 
   return [year, month, day].join('-');
 }
-
-/*
-export const getPDMPDisplaySummary = ((summary: CQLSummary) => {
-  let pdmpData = new Array();
-  summary.dispensations.forEach((dispenseSummary: MedicationDispenseSummary) => {
-    let medName = dispenseSummary.medicationName
-    console.log("Med name = " + medName)
-    pdmpData.push({
-      "Name": medName,
-      "MME": '',
-      // "Quantity": dispenseSummary.quantity,
-      "Quantity": 30,
-      "DaysSupply": dispenseSummary.daysSupply,
-      "Given": dispenseSummary.dateFilled,
-      "Dispenser": dispenseSummary.pharmacyName
-    })
-  })
-
-  return pdmpData
-})
-*/

@@ -82,7 +82,8 @@ valueset "Substance Abuse": 'http://fhir.org/guides/cdc/opioid-cds/ValueSet/subs
 // Empty
 // [See value set in VSAC](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1032.102/expansion)
 // Replaces the "Suicide Attempt" value set from F2C (2.16.840.1.113762.1.4.1032.102)
-valueset "Suicide Attempt": 'http://fhir.org/guides/cqf/cds4cpm/ValueSet/empty'
+// valueset "Suicide Attempt": 'http://fhir.org/guides/cqf/cds4cpm/ValueSet/empty'
+valueset "Suicide Attempt": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.102'
 
 // [Sleep disordered breathing](https://vsac.nlm.nih.gov/valueset/2.16.840.1.113762.1.4.1021.93/expansion)
 // replaces F2C valueset Sleep disordered breathing: 2.16.840.1.113762.1.4.1032.53
